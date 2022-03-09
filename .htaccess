@@ -1,0 +1,26 @@
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+
+  # Változók beállítása
+  
+  SetEnv SMTP_SENDER_EMAIL info@pcm81.hu
+  SetEnv SMTP_SENDER_NAME "Adminisztrátor"
+  SetEnv SMTP_USERNAME info@pcm81.hu
+  SetEnv SMTP_PASSWORD Csempe01
+  SetEnv SMTP_HOST webmail-wh04.024reg.com
+  SetEnv SMTP_PORT 465
+
+  SetEnv DB_HOST localhost
+  SetEnv DB_NAME jl
+  SetEnv DB_USERNAME jluser
+  SetEnv DB_PASSWORD Jarmu2021!
+  
+  # Ha a public mappában lévő fájlra érkezett a kérés, szolgáld ki a fájlt
+  RewriteCond %{REQUEST_URI} ^.*public/(.*)
+  RewriteRule ^(.*)$ public/%1 [END]
+  
+  # Minden más esetben az index.php-t futtasd le
+  RewriteRule (.*)  index.php [QSA]
+
+</IfModule>

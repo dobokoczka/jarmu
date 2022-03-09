@@ -1,0 +1,18 @@
+<?php
+require './views/header.phtml';
+session_start();
+?>
+
+<div class="regularContainer">
+    <h1><span>J</span>ármű<span>L</span>ogisztika</h1>
+    <h2>Az oldal nem található</h2>
+    <?php
+    if (isset($_SESSION['name'])) {
+        echo '<a href="/" class="regularLink">Vissza a főoldalra</a>';
+    } else {
+        echo '<a href="/" class="regularLink">Vissza a bejelentkezéshez</a>';
+    }
+    ?>
+</div>
+
+<?php require './views/footer.phtml'; ?>
